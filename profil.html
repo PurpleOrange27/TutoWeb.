@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Saya - TutoWeb</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <style>
+      /* --- FIX LAYOUT STABILISASI --- */
+
+      /* 1. Paksa scrollbar selalu muncul agar tidak ada lompatan layout */
+      html {
+        overflow-y: scroll;
+      }
+
+      /* 2. Stabilisasi Menu Active */
+      .nav-links a.active {
+        font-weight: 500 !important;
+        color: var(--primary);
+      }
+
+      .nav-links a {
+        border: 1px solid transparent;
+      }
+
+      /* --- STYLE KHUSUS HALAMAN PROFIL --- */
+      :root {
+        --card-radius: 16px;
+        --card-padding: 24px;
+        --grid-gap: 32px;
+        --sidebar-width: 280px;
+        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.03);
+      }
+
+      .profile-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: var(--sidebar-width) 1fr;
+        gap: var(--grid-gap);
+        align-items: start;
+        margin-bottom: 60px;
+      }
+
+      /* Sidebar & Card Styles */
+      .profile-sidebar {
+        background: white;
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+        text-align: center;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid #f1f5f9;
+        position: sticky;
+        top: 120px;
+      }
+
+      .profile-img-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 16px;
+        position: relative;
+      }
+
+      .profile-pic-real {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 3px solid white;
+        box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+      }
+
+      .profile-sidebar h3 {
+        font-size: 1.1rem;
+        color: #1e293b;
+        margin-bottom: 4px;
+        font-weight: 700;
+      }
+
+      .profile-sidebar p {
+        font-size: 0.9rem;
+        color: #64748b;
+        margin-bottom: 12px;
+      }
+
+      .user-badge {
+        background: #eff6ff;
+        color: #3b82f6;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: inline-block;
+        letter-spacing: 0.5px;
+      }
+
+      .stats-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 24px;
+        padding-top: 20px;
+        border-top: 1px solid #f8fafc;
+      }
+
+      .stat-item {
+        flex: 1;
+      }
+      .stat-item h4 {
+        font-size: 1.1rem;
+        color: #0f172a;
+        margin-bottom: 0;
+        font-weight: 700;
+      }
+      .stat-item span {
+        font-size: 0.75rem;
+        color: #94a3b8;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .btn-danger {
+        background: #fef2f2;
+        color: #ef4444;
+        width: 100%;
+        margin-top: 24px;
+        padding: 12px;
+        border: 1px solid #fee2e2;
+        border-radius: 50px;
+        font-weight: 600;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        font-family: "Poppins", sans-serif;
+      }
+      .btn-danger:hover {
+        background: #fee2e2;
+        transform: translateY(-2px);
+      }
+
+      .content-card {
+        background: white;
+        border-radius: var(--card-radius);
+        padding: var(--card-padding);
+        box-shadow: var(--shadow-soft);
+        border: 1px solid #f1f5f9;
+        margin-bottom: 24px;
+      }
+
+      .card-header-profile {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+        border-bottom: 1px solid #f1f5f9;
+        padding-bottom: 16px;
+      }
+      .card-header-profile h3 {
+        font-size: 1.15rem;
+        color: #1e293b;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .progress-item {
+        margin-bottom: 20px;
+      }
+      .progress-item:last-child {
+        margin-bottom: 0;
+      }
+      .progress-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #475569;
+      }
+      .progress-track {
+        background: #f1f5f9;
+        height: 10px;
+        border-radius: 99px;
+        overflow: hidden;
+      }
+      .progress-fill {
+        height: 100%;
+        border-radius: 99px;
+        transition: width 1s ease-in-out;
+      }
+      .fill-html {
+        width: 95%;
+        background: linear-gradient(90deg, #f97316, #ea580c);
+      }
+      .fill-css {
+        width: 80%;
+        background: linear-gradient(90deg, #3b82f6, #2563eb);
+      }
+      .fill-js {
+        width: 50%;
+        background: linear-gradient(90deg, #eab308, #ca8a04);
+      }
+      .fill-project {
+        width: 30%;
+        background: linear-gradient(90deg, #10b981, #059669);
+      }
+
+      .form-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+      .form-group label {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: #64748b;
+        margin-bottom: 8px;
+        display: block;
+      }
+      .form-control {
+        width: 100%;
+        padding: 12px 16px;
+        border-radius: 12px;
+        border: 1px solid #e2e8f0;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.95rem;
+        color: #334155;
+        background: #fff;
+        transition: 0.3s;
+      }
+      .form-control:disabled {
+        background-color: #f8fafc;
+        color: #94a3b8;
+        border-color: #f1f5f9;
+        cursor: not-allowed;
+      }
+      .form-control:focus {
+        border-color: #3b82f6;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+      }
+
+      .welcome-section {
+        text-align: center;
+        margin: 40px auto 48px;
+        padding: 0 20px;
+      }
+      .welcome-section h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        margin-bottom: 8px;
+        letter-spacing: -0.5px;
+        background: linear-gradient(135deg, #0f172a 20%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      body:not(.light-mode) .welcome-section h1 {
+        background: linear-gradient(135deg, #ffffff 20%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.25));
+      }
+      .welcome-section p {
+        color: #94a3b8;
+        font-size: 1.05rem;
+        max-width: 500px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .btn-glow-primary {
+        background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+        color: white;
+        padding: 10px 20px;
+        border-radius: 50px;
+        border: none;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        transition: all 0.3s ease;
+      }
+      .btn-glow-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+      }
+
+      .btn-modern-outline {
+        background: transparent;
+        color: #3b82f6;
+        border: 1px solid #bfdbfe;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-family: "Poppins", sans-serif;
+        font-size: 0.85rem;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.3s ease;
+      }
+      .btn-modern-outline:hover {
+        background: #eff6ff;
+        border-color: #3b82f6;
+      }
+
+      @media screen and (max-width: 900px) {
+        .dashboard-grid {
+          grid-template-columns: 1fr;
+          gap: 24px;
+        }
+        .profile-sidebar {
+          position: static;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+        .stats-row {
+          width: 100%;
+          max-width: 400px;
+        }
+      }
+      @media screen and (max-width: 600px) {
+        .card-header-profile {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 16px;
+        }
+        .btn-glow-primary,
+        .btn-modern-outline {
+          width: 100%;
+          justify-content: center;
+        }
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+        .welcome-section h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">TutoWeb.</div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="profil.html" class="active">Profil Saya</a></li>
+
+        <li class="nav-item-dropdown">
+          <a href="#">Materi ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="materi/bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="materi/bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="materi/bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="materi/bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="materi/bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="materi/bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="materi/bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="materi/bab8.html">Bab 8: Project</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="contact.html"
+            style="border: 1px solid var(--primary); color: var(--primary)"
+            >Kontak</a
+          >
+        </li>
+      </ul>
+
+      <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+    </nav>
+
+    <div class="burger" onclick="toggleMenu()">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <div class="profile-container">
+      <div class="welcome-section">
+        <h1>Halo, User! </h1>
+        <p>Progres belajar kamu sangat baik. Lanjutkan semangatnya!</p>
+      </div>
+
+      <div class="dashboard-grid">
+        <aside class="profile-sidebar">
+          <div class="profile-img-wrapper">
+            <img
+              src="https://ui-avatars.com/api/?name=User&background=6366f1&color=fff&size=200"
+              alt="Foto Profil"
+              class="profile-pic-real"
+            />
+          </div>
+
+          <h3 style="margin-bottom: 5px">Nama Pengguna</h3>
+          <p>@username_dev</p>
+          <span class="user-badge">Mahasiswa Semester 2</span>
+
+          <div class="stats-row">
+            <div class="stat-item">
+              <h4>8</h4>
+              <span>Bab</span>
+            </div>
+            <div class="stat-item">
+              <h4>1.2k</h4>
+              <span>XP</span>
+            </div>
+            <div class="stat-item">
+              <h4>24</h4>
+              <span>Jam</span>
+            </div>
+          </div>
+
+          <button class="btn-danger" onclick="handleLogout()">
+            <i class="fas fa-sign-out-alt"></i> Keluar
+          </button>
+        </aside>
+
+        <main class="dashboard-content">
+          <div class="content-card">
+            <div class="card-header-profile">
+              <h3>📚 Statistik Skill</h3>
+              <button
+                class="btn-glow-primary"
+                onclick="window.location.href='materi/bab5.html'"
+              >
+                Lanjut Belajar <i class="fas fa-arrow-right"></i>
+              </button>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info">
+                <span
+                  ><i
+                    class="fab fa-html5"
+                    style="color: #ea580c; width: 24px"
+                  ></i>
+                  HTML & Struktur</span
+                >
+                <span>95%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill fill-html"></div>
+              </div>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info">
+                <span
+                  ><i
+                    class="fab fa-css3-alt"
+                    style="color: #2563eb; width: 24px"
+                  ></i>
+                  CSS & Frameworks</span
+                >
+                <span>80%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill fill-css"></div>
+              </div>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info">
+                <span
+                  ><i class="fab fa-js" style="color: #ca8a04; width: 24px"></i>
+                  JavaScript Logic</span
+                >
+                <span>50%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill fill-js"></div>
+              </div>
+            </div>
+
+            <div class="progress-item">
+              <div class="progress-info">
+                <span
+                  ><i
+                    class="fas fa-laptop-code"
+                    style="color: #059669; width: 24px"
+                  ></i>
+                  Integrasi & Project</span
+                >
+                <span>30%</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill fill-project"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-card">
+            <div class="card-header-profile">
+              <h3>⚙️ Data Diri</h3>
+              <button
+                class="btn-modern-outline"
+                onclick="enableEdit()"
+                id="btnEdit"
+              >
+                <i class="fas fa-pen"></i> Edit Profil
+              </button>
+            </div>
+            <form id="profileForm" onsubmit="return saveProfile(event)">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label>Nama Lengkap</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="Loading..."
+                    disabled
+                    id="inputNama"
+                  />
+                </div>
+                <div class="form-group">
+                  <label>NIM</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    value="-"
+                    disabled
+                    id="inputNim"
+                  />
+                </div>
+                <div class="form-group" style="grid-column: 1/-1">
+                  <label>Email Kampus</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    value="loading@student.unpam.ac.id"
+                    disabled
+                    id="inputEmail"
+                  />
+                </div>
+              </div>
+              <div
+                id="saveAction"
+                style="display: none; margin-top: 24px; text-align: right"
+              >
+                <button
+                  type="button"
+                  class="btn-modern-outline"
+                  onclick="cancelEdit()"
+                  style="
+                    margin-right: 10px;
+                    border: 1px solid #e2e8f0;
+                    color: #64748b;
+                  "
+                >
+                  Batal
+                </button>
+                <button type="submit" class="btn-glow-primary">
+                  Simpan Perubahan
+                </button>
+              </div>
+            </form>
+          </div>
+        </main>
+      </div>
+    </div>
+
+    <footer>
+      <p
+        style="
+          text-align: center;
+          padding: 30px;
+          color: #94a3b8;
+          font-size: 0.9rem;
+          margin-top: 40px;
+          border-top: 1px solid rgba(255, 255, 255, 0.05);
+        "
+      >
+        © 2025 Kelompok 11 - Teknik Informatika Universitas Pamulang.
+      </p>
+    </footer>
+
+    <div id="toast"></div>
+    <script src="js/script.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        loadUserData();
+      });
+
+      function loadUserData() {
+        const storedName = localStorage.getItem("user_name") || "Mahasiswa";
+        const storedEmail =
+          localStorage.getItem("user_email") || "email@student.unpam.ac.id";
+        const firstName = storedName.split(" ")[0];
+
+        // 1. Update Welcome Message
+        const welcomeTitle = document.querySelector(".welcome-section h1");
+        if (welcomeTitle) welcomeTitle.innerText = `Halo, ${firstName}! `;
+
+        // 2. Update Sidebar
+        const sidebarName = document.querySelector(".profile-sidebar h3");
+        const sidebarUsername = document.querySelector(".profile-sidebar p");
+        const sidebarImg = document.querySelector(".profile-pic-real");
+
+        if (sidebarName) sidebarName.innerText = storedName;
+        if (sidebarUsername)
+          sidebarUsername.innerText = "@" + firstName.toLowerCase() + "_dev";
+        if (sidebarImg) {
+          sidebarImg.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(
+            storedName
+          )}&background=6366f1&color=fff&size=200`;
+        }
+
+        // 3. Update Inputs
+        const inputNama = document.getElementById("inputNama");
+        const inputEmail = document.getElementById("inputEmail");
+
+        if (inputNama) inputNama.value = storedName;
+        if (inputEmail) inputEmail.value = storedEmail;
+      }
+
+      function enableEdit() {
+        document.getElementById("inputNama").disabled = false;
+        document.getElementById("inputEmail").disabled = false;
+        document.getElementById("inputNim").disabled = false;
+        document.getElementById("saveAction").style.display = "block";
+        document.getElementById("btnEdit").style.display = "none";
+        document.getElementById("inputNama").focus();
+      }
+
+      function cancelEdit() {
+        loadUserData(); // Reset ke data lama
+        document.getElementById("inputNama").disabled = true;
+        document.getElementById("inputEmail").disabled = true;
+        document.getElementById("inputNim").disabled = true;
+        document.getElementById("saveAction").style.display = "none";
+        document.getElementById("btnEdit").style.display = "inline-flex";
+      }
+
+      function saveProfile(e) {
+        e.preventDefault();
+        const newName = document.getElementById("inputNama").value;
+        const newEmail = document.getElementById("inputEmail").value;
+
+        localStorage.setItem("user_name", newName);
+        localStorage.setItem("user_email", newEmail);
+
+        showToast("✅ Data profil berhasil diperbarui!", "success");
+        loadUserData();
+
+        document.getElementById("inputNama").disabled = true;
+        document.getElementById("inputEmail").disabled = true;
+        document.getElementById("inputNim").disabled = true;
+        document.getElementById("saveAction").style.display = "none";
+        document.getElementById("btnEdit").style.display = "inline-flex";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 8: Proyek Akhir - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+      :root { --bab-color: #f59e0b; } /* Gold */
+
+      section {
+        background: rgba(30, 25, 20, 0.7);
+        border: 1px solid rgba(245, 158, 11, 0.3);
+        backdrop-filter: blur(12px);
+        border-radius: 16px; padding: 30px; margin-bottom: 40px;
+        box-shadow: 0 10px 40px rgba(245, 158, 11, 0.05);
+      }
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:20px;
+      }
+      .project-card {
+        background: rgba(255,255,255,0.05); border: 1px solid #444; border-radius: 12px; padding: 25px; margin-bottom: 30px; transition:0.3s;
+      }
+      .project-card:hover { border-color: var(--bab-color); transform: translateY(-5px); }
+      
+      .project-preview {
+        background: #111; border: 2px dashed #444; height: 200px; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; border-radius: 8px; overflow: hidden; position: relative;
+      }
+      .grid-demo { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; width: 100%; padding: 20px; }
+      .grid-item { background: #333; height: 60px; display: flex; align-items: center; justify-content: center; border-radius: 4px; font-size: 0.8rem; color:white; }
+      .blog-post { background: #222; padding: 10px; margin-bottom: 10px; border-left: 4px solid var(--bab-color); color: #ddd; border-radius: 4px; }
+      .btn-demo { background: var(--bab-color); border:none; padding:10px 20px; border-radius:50px; font-weight:bold; cursor:pointer; color:black; }
+      /* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-header"><h3><br>Daftar Isi</h3></div>
+        <ul class="sidebar-menu">
+          <li><a href="#company" class="active-link">8.1 Company Profile</a></li>
+          <li><a href="#blog">8.2 Blog Sederhana</a></li>
+          <li><a href="#portfolio">8.3 Portofolio</a></li>
+          <li><a href="#tips">8.4 Tips & Trik</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color); color: white">Bab 8</span>
+          <h1>Proyek Mini: Website Interaktif</h1>
+          <p>Menerapkan seluruh ilmu (HTML, CSS, JS) dalam tiga studi kasus nyata yang siap dijadikan portofolio.</p>
+        </header>
+
+        <section id="company">
+          <h2>8.1 Studi Kasus 1: Company Profile 🏢</h2>
+          <div class="project-card">
+            <h4 style="color:var(--bab-color); margin-bottom:10px;">Fitur Utama:</h4>
+            <ul class="list-check">
+              <li>Sticky Navbar</li><li>Hero Section</li><li>Services Card</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="blog">
+          <h2>8.2 Studi Kasus 2: Blog Sederhana 📝</h2>
+          <div class="project-card">
+            <div class="project-preview"><div class="blog-demo" id="blogContainer" style="width:100%; padding:20px;"></div></div>
+            <button class="btn-demo" onclick="loadBlogDemo()">▶️ Jalankan Demo Blog</button>
+          </div>
+        </section>
+
+        <section id="portfolio">
+          <h2>8.3 Studi Kasus 3: Portofolio Online 🎨</h2>
+          <div class="project-card">
+            <div class="project-preview">
+              <div class="grid-demo">
+                <div class="grid-item" style="background: #e11d48">1</div>
+                <div class="grid-item" style="background: #f59e0b">2</div>
+                <div class="grid-item" style="background: #10b981">3</div>
+                <div class="grid-item" style="background: #3b82f6">4</div>
+                <div class="grid-item" style="background: #6366f1">5</div>
+                <div class="grid-item" style="background: #8b5cf6">6</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="bab7.html" class="btn-prev">← Bab 7: Integrasi</a>
+          <a href="../index.html" class="btn-next" style="background: var(--bab-color); color:black; border:none; font-weight:bold;">Selesai Belajar (Home) 🎉</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      function loadBlogDemo() {
+        const container = document.getElementById("blogContainer");
+        container.innerHTML = "";
+        const dummyData = [{ title: "Belajar HTML", desc: "Mulai dari dasar..." }, { title: "Tips CSS", desc: "Layout mudah..." }];
+        dummyData.forEach((post, index) => {
+          setTimeout(() => {
+            container.innerHTML += `<div class="blog-post"><h4 style="margin:0; color:#fff">${post.title}</h4><p style="margin:5px 0 0; font-size:0.8rem;">${post.desc}</p></div>`;
+          }, index * 300);
+        });
+      }
+    </script>
+  </body>
+</html>

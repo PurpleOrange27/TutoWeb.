@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 3: CSS3 Styling - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+      :root { --bab-color: #2965f1; } /* CSS Blue */
+      
+      section {
+        background: rgba(41, 101, 241, 0.05);
+        border: 1px solid rgba(41, 101, 241, 0.2);
+        backdrop-filter: blur(15px);
+        border-radius: 16px; padding: 30px; margin-bottom: 40px;
+        box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5);
+      }
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        margin-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:10px;
+      }
+      .box-demo {
+        background: #f8f9fa; border: 2px dashed #ccc; padding: 20px; text-align: center; margin: 20px 0; border-radius: 10px; color: #333;
+      }
+      .layer-margin { background: #fbd5b5; padding: 20px; display: inline-block; position: relative; border-radius: 4px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+      .layer-border { background: #fde68a; padding: 5px; border: 3px solid #000; }
+      .layer-padding { background: #c3f0ca; padding: 20px; }
+      .layer-content { background: #fff; padding: 10px; font-weight: bold; min-width: 100px; }
+      .label-layer { font-size: 10px; text-transform: uppercase; letter-spacing: 1px; display: block; margin-bottom: 2px; font-weight: bold; color: #555; }
+      
+      .code-window { background: #1e293b; border-radius: 8px; border: 1px solid #334155; margin-top:15px; }
+      .window-header { background: #0f172a; padding: 8px 15px; color: #64748b; font-size: 0.8rem; display: flex; align-items:center; gap: 8px; }
+      .window-header::before { content: "● ● ●"; color: #2965f1; letter-spacing: -2px; margin-right: 10px; }
+      
+      .btn-toggle-answer { background: var(--bab-color); color: white; border: none; padding: 12px 24px; border-radius: 50px; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px;}
+      .btn-toggle-answer:hover { box-shadow: 0 0 20px var(--bab-color); transform: translateY(-2px); }
+      /* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+body.light-mode .layer-content {
+  background: #ffffff;
+  color: #1a1a2e;
+  border: 1px solid #b5b3f0;
+}
+
+body.light-mode .label-layer {
+  color: #24245c !important;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-header"><h3><br>Daftar Isi</h3></div>
+        <ul class="sidebar-menu">
+          <li><a href="#intro" class="active-link">3.1 Pengenalan</a></li>
+          <li><a href="#syntax">3.2 Selektor & Properti</a></li>
+          <li><a href="#boxmodel">3.3 Box Model</a></li>
+          <li><a href="#style">3.4 Warna & Typo</a></li>
+          <li><a href="#layout">3.5 Flexbox & Grid</a></li>
+          <li><a href="#animasi">3.6 Animasi</a></li>
+          <li><a href="#praktek">3.7 Praktikum</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color); color: white">Bab 3</span>
+          <h1>CSS3 – Styling dan Layout</h1>
+          <p>Mengubah kerangka HTML menjadi halaman web yang indah, responsif, dan interaktif.</p>
+        </header>
+
+        <section id="intro">
+          <h2>3.1 Pengenalan CSS3</h2>
+          <p><strong>CSS (Cascading Style Sheets)</strong> berfungsi memisahkan konten (HTML) dengan desain (Visual). CSS3 adalah versi terbaru yang mendukung animasi, gradasi, dan tata letak modern.</p>
+          <div class="info-box" style="background: rgba(41, 101, 241, 0.1); border-left: 4px solid var(--bab-color); padding: 20px; border-radius: 8px;">
+            <i class="fab fa-css3-alt" style="color: var(--bab-color); font-size: 1.5rem; margin-right:10px"></i>
+            <span>Tanpa CSS, semua website akan terlihat seperti dokumen Word biasa (hitam putih).</span>
+          </div>
+        </section>
+
+        <section id="syntax">
+          <h2>3.2 Selektor, Properti, dan Nilai</h2>
+          <div style="display:flex; gap:20px; flex-wrap:wrap;">
+            <div style="flex:1; min-width:300px">
+                <p>Rumus dasar penulisan CSS:</p>
+                <div class="code-window">
+                    <pre class="code-content"><code>selektor {
+    properti: nilai;
+}
+h1 { color: blue; }</code></pre>
+                </div>
+            </div>
+            <div style="flex:1; min-width:300px">
+                <table class="docs-table" style="width:100%; border-radius:10px; overflow:hidden;">
+                    <tr style="background:var(--bab-color); color:white;"><th>Selektor</th><th>Simbol</th><th>Target</th></tr>
+                    <tr style="background:rgba(255,255,255,0.05);"><td>Tag</td><td><code>p</code></td><td>Semua &lt;p&gt;</td></tr>
+                    <tr style="background:rgba(255,255,255,0.02);"><td>Class</td><td><code>.btn</code></td><td>class="btn"</td></tr>
+                    <tr style="background:rgba(255,255,255,0.05);"><td>ID</td><td><code>#unik</code></td><td>id="unik"</td></tr>
+                </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="boxmodel">
+          <h2>3.3 Box Model 📦</h2>
+          <p>Setiap elemen HTML dianggap sebagai "kotak". Memahami ini penting untuk mengatur jarak.</p>
+          <div class="box-demo">
+            <div class="layer-margin">
+              <span class="label-layer">Margin (Jarak Luar)</span>
+              <div class="layer-border">
+                <span class="label-layer">Border (Garis)</span>
+                <div class="layer-padding">
+                  <span class="label-layer">Padding (Jarak Dalam)</span>
+                  <div class="layer-content">CONTENT</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="layout">
+          <h2>3.5 Layout: Flexbox & Grid</h2>
+          <p>Teknik modern untuk menyusun tata letak website agar rapi.</p>
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+              <div>
+                  <h4 style="color: var(--bab-color)">Flexbox (1 Dimensi)</h4>
+                  <div class="code-window"><pre class="code-content"><code>.container {
+  display: flex;
+  justify-content: center;
+}</code></pre></div>
+              </div>
+              <div>
+                  <h4 style="color: var(--bab-color)">Grid (2 Dimensi)</h4>
+                  <div class="code-window"><pre class="code-content"><code>.galeri {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}</code></pre></div>
+              </div>
+          </div>
+        </section>
+
+        <section id="animasi">
+          <h2>3.6 Animasi & Transisi</h2>
+          <p>Membuat elemen bergerak halus saat diinteraksi (Hover).</p>
+          <div class="browser-frame" style="text-align: center; padding: 30px; background: rgba(255,255,255,0.1); border-radius:10px;">
+            <button class="btn-animasi">Arahkan Mouse ke Sini!</button>
+          </div>
+          <style>
+            .btn-animasi { padding: 12px 25px; background: #2965f1; color: white; border: none; border-radius: 50px; transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; font-weight:bold;}
+            .btn-animasi:hover { transform: scale(1.1) rotate(2deg); box-shadow: 0 0 20px #2965f1; }
+          </style>
+        </section>
+
+        <section id="praktek">
+          <h2>3.7 Praktikum: Desain Halaman Profil 🎨</h2>
+          <div class="challenge-container" style="border: 2px solid var(--bab-color); padding:30px; border-radius:12px; background:rgba(41, 101, 241, 0.05);">
+            <div class="challenge-header">
+              <h4 style="color:var(--bab-color)">🎯 Misi Styling:</h4>
+              <ul style="margin-left:20px; line-height:1.8">
+                <li>Buat foto profil berbentuk lingkaran (border-radius: 50%).</li>
+                <li>Beri warna background abu-abu muda pada body.</li>
+                <li>Tengahkan konten utama (text-align: center).</li>
+              </ul>
+            </div>
+            <button class="btn-toggle-answer" onclick="toggleAnswer()">👁️ Lihat Solusi CSS</button>
+            <div id="answer-code" class="code-window" style="display: none;">
+              <div class="window-header"><span class="filename">style.css</span></div>
+              <pre class="code-content"><code>img { border-radius: 50%; }
+body { background-color: #f4f4f4; text-align: center; }</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="bab2.html" class="btn-prev">← Bab 2: HTML5</a>
+          <a href="bab4.html" class="btn-next">Lanjut: Bab 4 (Frameworks) →</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      function toggleAnswer() {
+        var x = document.getElementById("answer-code");
+        var btn = document.querySelector(".btn-toggle-answer");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+          btn.innerHTML = "🙈 Sembunyikan Kode";
+        } else {
+          x.style.display = "none";
+          btn.innerHTML = "👁️ Lihat Solusi CSS";
+        }
+      }
+    </script>
+  </body>
+</html>

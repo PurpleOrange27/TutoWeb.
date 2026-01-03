@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hubungi Kami - TutoWeb</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <style>
+      /* --- FIX LAYOUT STABILISASI (SAMA DENGAN PROFIL.HTML) --- */
+
+      /* 1. Paksa scrollbar selalu muncul agar tidak ada lompatan layout */
+      html {
+        overflow-y: scroll;
+      }
+
+      /* 2. Stabilisasi Menu Active & Border */
+      .nav-links a {
+        border: 1px solid transparent;
+      }
+
+      .nav-links a.active {
+        font-weight: 500 !important;
+        color: var(--primary);
+      }
+
+      /* --- CUSTOM STYLE UNTUK CONTACT PAGE --- */
+
+      /* 1. Header Hubungi Kami Center & Gradient */
+      .contact-hero {
+        text-align: center;
+        padding: 60px 0 40px;
+      }
+
+      .contact-hero h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        /* Gradient Warna Neon */
+        background: linear-gradient(135deg, #fff 20%, var(--primary) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* Efek Glow */
+        filter: drop-shadow(0 0 15px var(--primary-glow));
+      }
+
+      .contact-hero p {
+        max-width: 600px;
+        margin: 0 auto; /* Center Text Block */
+        font-size: 1.1rem;
+        color: var(--text-muted);
+      }
+
+      /* 2. Galeri & Tugas Center */
+      .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .section-header h2 {
+        font-size: 2.2rem;
+        display: inline-block;
+        /* Gradient Pink ke Biru */
+        background: linear-gradient(90deg, var(--secondary), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .section-header p {
+        color: var(--text-muted);
+        font-size: 1rem;
+      }
+
+      /* 3. Video Card Styling (Card Background & Center) */
+      .video-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: 25px; /* Jarak antara video dan pinggiran card */
+        max-width: 800px; /* Batasi lebar agar tidak kegedean */
+        margin: 0 auto 60px; /* Posisi Tengah Horizontal */
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .video-wrapper {
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        background: #000;
+        position: relative;
+        /* Aspect Ratio 16:9 */
+        aspect-ratio: 16/9;
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .video-caption {
+        text-align: center;
+        margin-top: 20px;
+        font-style: italic;
+        color: var(--text-muted);
+        font-size: 0.9rem;
+      }
+
+      .video-badge {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        color: #4ade80;
+        padding: 6px 14px;
+        border-radius: 50px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border: 1px solid rgba(74, 222, 128, 0.3);
+        z-index: 10;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .contact-hero h1 {
+          font-size: 2.2rem;
+        }
+        .video-card {
+          padding: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">TutoWeb.</div>
+
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="profil.html">Profil Saya</a></li>
+
+        <li class="nav-item-dropdown">
+          <a href="#">Materi ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="materi/bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="materi/bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="materi/bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="materi/bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="materi/bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="materi/bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="materi/bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="materi/bab8.html">Bab 8: Project</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a
+            href="contact.html"
+            style="border: 1px solid var(--primary); color: var(--primary)"
+            >Kontak</a
+          >
+        </li>
+      </ul>
+
+      <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+    </nav>
+
+    <div class="burger" onclick="toggleMenu()">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <header class="contact-hero">
+      <div class="container">
+        <h1>Hubungi Kami</h1>
+        <p>
+          Punya pertanyaan tentang materi atau ingin berdiskusi? Jangan ragu
+          untuk menghubungi tim kami atau datang langsung ke kampus.
+        </p>
+      </div>
+    </header>
+
+    <div class="container contact-container">
+      <section class="video-section">
+        <div class="section-header">
+          <h2><i class="fas fa-film"></i> Galeri & Tugas</h2>
+          <p>Dokumentasi perkenalan anggota kelompok 11.</p>
+        </div>
+
+        <div class="video-card">
+          <div class="video-wrapper">
+            <div class="video-badge">
+              <i class="fas fa-check-circle"></i> Tugas Verified
+            </div>
+            <video controls poster="assets/images/thumbnail.jpg">
+              <source src="video/tester.mp4" type="video/mp4" />
+              Browser Anda tidak mendukung tag video.
+            </video>
+          </div>
+          <p class="video-caption">
+            "Mahasiswa menggunakan Jas Almamater Universitas Pamulang sesuai
+            ketentuan tugas."
+          </p>
+        </div>
+      </section>
+
+      <hr
+        class="divider"
+        style="
+          margin-bottom: 60px;
+          border-color: var(--border-color);
+          opacity: 0.5;
+        "
+      />
+
+      <div class="contact-grid">
+        <div class="info-card">
+          <h3>Informasi Kampus</h3>
+          <p>Temukan kami di lokasi berikut untuk diskusi offline:</p>
+
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="fas fa-map-marker-alt"></i>
+
+              <strong>Universitas Pamulang (Viktor)</strong>
+              <p>
+                Jl. Raya Puspitek, Buaran, Kec. Pamulang, Kota Tangerang
+                Selatan.
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="icon-box">
+              <i class="fas fa-envelope"></i>
+
+              <strong>Email Official</strong>
+              <p class="link">kelompok11@student.unpam.ac.id</p>
+            </div>
+          </div>
+
+          <div class="map-box">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.370110772071!2d106.68893947567668!3d-6.346095693643688!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69e5a6e26dc3cd%3A0xccd6344b8021119d!2sUniversitas%20Pamulang%20Kampus%202%20(UNPAM%20Viktor)!5e0!3m2!1sid!2sid!4v1766328732399!5m2!1sid!2sid"
+              width="600"
+              height="450"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+
+          <div class="social-area">
+            <h4>Ikuti Kami</h4>
+            <div class="social-links">
+              <a href="#" class="btn-social inst"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="#" class="btn-social git"
+                ><i class="fab fa-github"></i
+              ></a>
+              <a href="#" class="btn-social wa"
+                ><i class="fab fa-whatsapp"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-card">
+          <h3>Kirim Pesan</h3>
+          <p>Masukan Anda sangat berarti bagi pengembangan website ini.</p>
+
+          <form id="contactForm" onsubmit="return handleContact(event)">
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_subject"
+              value="Pesan Baru dari Website TutoWeb!"
+            />
+
+            <div class="form-group">
+              <div class="input-icon">
+                <i class="fas fa-user"></i>
+                <label>Nama Lengkap</label>
+                <input
+                  type="text"
+                  id="nama"
+                  name="name"
+                  placeholder="Contoh: Sabrina Luna"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="input-icon">
+                <i class="fas fa-envelope"></i>
+                <label>Alamat Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="nama@email.com"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>Isi Pesan</label>
+              <textarea
+                id="pesan"
+                name="message"
+                rows="5"
+                placeholder="Tuliskan pertanyaan atau saran Anda..."
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-full">
+              Kirim Pesan <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>© 2025 Kelompok 11 - Teknik Informatika Universitas Pamulang.</p>
+    </footer>
+
+    <div id="toast">Pesan Terkirim!</div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

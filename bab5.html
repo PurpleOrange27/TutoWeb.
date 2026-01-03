@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 5: JavaScript Modern - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+      :root { --bab-color: #f7df1e; } /* JS Yellow */
+
+      section {
+        background: rgba(30, 30, 30, 0.6);
+        border: 1px solid rgba(247, 223, 30, 0.2);
+        backdrop-filter: blur(12px);
+        border-radius: 16px; padding: 30px; margin-bottom: 40px;
+        box-shadow: 0 4px 30px rgba(0,0,0,0.3);
+      }
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:20px;
+      }
+      .code-window { background: #1a1a1a; border-left: 4px solid var(--bab-color); padding: 0; border-radius: 6px; margin-top:15px; overflow:hidden;}
+      .window-header { background: #252525; padding: 5px 15px; color: var(--bab-color); font-size:0.8rem; }
+      .code-content { padding: 15px; color: #eee; }
+      
+      .interactive-box {
+        background: rgba(255,255,255,0.05); border: 1px dashed var(--bab-color);
+        padding: 20px; border-radius: 10px; text-align: center; margin: 20px 0;
+      }
+      .btn-demo {
+        background: var(--bab-color); color: #000; border: none; padding: 10px 20px; border-radius: 5px; font-weight: bold; cursor: pointer; margin: 5px; transition: 0.3s;
+      }
+      .btn-demo:hover { box-shadow: 0 0 15px var(--bab-color); transform: translateY(-2px); }
+      .dark-mode-demo { background-color: #000 !important; color: white !important; border-color: #fff; }
+      /* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-header"><h3><br>Daftar Isi</h3></div>
+        <ul class="sidebar-menu">
+          <li><a href="#intro" class="active-link">5.1 Pengenalan</a></li>
+          <li><a href="#syntax">5.2 Var & Tipe Data</a></li>
+          <li><a href="#control">5.3 Logika & Loop</a></li>
+          <li><a href="#es6">5.4 Fungsi & ES6+</a></li>
+          <li><a href="#dom">5.5 DOM</a></li>
+          <li><a href="#event">5.6 Event Handling</a></li>
+          <li><a href="#praktek">5.7 Praktikum</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color); color: #000">Bab 5</span>
+          <h1>JavaScript Modern (ES6+)</h1>
+          <p>Membuat website menjadi interaktif, dinamis, dan cerdas.</p>
+        </header>
+
+        <section id="intro">
+          <h2>5.1 Pengenalan JavaScript</h2>
+          <p><strong>JavaScript (JS)</strong> adalah otot dan otak website.</p>
+          <div class="info-box" style="background: rgba(247, 223, 30, 0.1); border-left: 5px solid var(--bab-color); padding: 20px; border-radius: 8px;">
+            <i class="fab fa-js-square" style="color: var(--bab-color); font-size: 1.5rem; margin-right:10px;"></i>
+            <span>Kita menggunakan standar <strong>ES6 (ECMAScript 2015+)</strong> yang lebih ringkas dan powerful.</span>
+          </div>
+        </section>
+
+        <section id="syntax">
+          <h2>5.2 Variabel, Tipe Data, & Operator</h2>
+          <p>Gunakan <code>let</code> dan <code>const</code>, tinggalkan <code>var</code>.</p>
+          <div class="code-window">
+            <div class="window-header"><span class="filename">script.js</span></div>
+            <pre class="code-content"><code>const umur = 21; // Tetap
+let skor = 0;    // Bisa berubah
+const hobi = ["Koding", "Gaming"];</code></pre>
+          </div>
+        </section>
+
+        <section id="control">
+          <h2>5.3 Struktur Kontrol</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                  <h4 style="color: var(--bab-color)">If / Else</h4>
+                  <div class="code-window"><pre class="code-content"><code>if (nilai >= 75) {
+  console.log("Lulus");
+}</code></pre></div>
+              </div>
+              <div>
+                  <h4 style="color: var(--bab-color)">Looping</h4>
+                  <div class="code-window"><pre class="code-content"><code>for (let i = 0; i < 5; i++) {
+  console.log(i);
+}</code></pre></div>
+              </div>
+          </div>
+        </section>
+
+        <section id="es6">
+          <h2>5.4 Fungsi & Arrow Function 🚀</h2>
+          <div class="code-window">
+            <pre class="code-content"><code>// Cara Modern (Arrow Function)
+const sapa = (nama) => {
+    return `Halo ${nama}`; // Template Literal
+}</code></pre>
+          </div>
+        </section>
+
+        <section id="dom">
+          <h2>5.5 DOM (Document Object Model)</h2>
+          <p>Mengubah HTML dari JavaScript.</p>
+          <div class="code-window">
+            <pre class="code-content"><code>const judul = document.getElementById('judul');
+judul.innerText = "Teks Berubah!";
+judul.style.color = "yellow";</code></pre>
+          </div>
+        </section>
+
+        <section id="event">
+          <h2>5.6 Event Handling</h2>
+          <div class="interactive-box">
+            <h4 id="demoText" style="margin-bottom:15px;">Klik tombol di bawah!</h4>
+            <button class="btn-demo" id="btnUbah">Ubah Teks</button>
+            <button class="btn-demo" id="btnReset" style="background: #ccc;">Reset</button>
+          </div>
+        </section>
+
+        <section id="praktek">
+          <h2>5.7 Praktikum: Dark Mode Switcher 🌓</h2>
+          <div class="challenge-container" style="border: 2px solid var(--bab-color); padding: 25px; border-radius: 12px; background: rgba(247, 223, 30, 0.05);">
+            <div class="challenge-header">
+              <h4 style="color:var(--bab-color)">🎯 Misi Anda:</h4>
+              <p>Buat tombol toggle yang mengubah warna background halaman.</p>
+            </div>
+            <div id="appSimulasi" class="interactive-box" style="transition: 0.5s">
+              <h3>Simulasi Aplikasi</h3>
+              <p>Ini adalah konten contoh.</p>
+              <button id="btnDark" class="btn-demo">🌙 Aktifkan Dark Mode</button>
+            </div>
+            <button class="btn-toggle-answer" onclick="toggleAnswer()" style="padding:10px 20px; background:white; color:#333; border:none; border-radius:50px; cursor:pointer; font-weight:bold;">👁️ Lihat Kode Solusi</button>
+            <div id="answer-code" class="code-window" style="display: none;">
+              <pre class="code-content"><code>btn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+});</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="bab4.html" class="btn-prev">← Bab 4: Frameworks</a>
+          <a href="bab6.html" class="btn-next">Lanjut: Bab 6 (Form) →</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      // Demo Scripts
+      const btnUbah = document.getElementById("btnUbah");
+      const btnReset = document.getElementById("btnReset");
+      const demoText = document.getElementById("demoText");
+      if (btnUbah) {
+        btnUbah.addEventListener("click", () => {
+          demoText.innerText = "🎉 JS Berhasil!";
+          demoText.style.color = "#f7df1e";
+        });
+      }
+      if (btnReset) {
+        btnReset.addEventListener("click", () => {
+          demoText.innerText = "Klik tombol di bawah!";
+          demoText.style.color = "inherit";
+        });
+      }
+      
+      const btnDark = document.getElementById("btnDark");
+      const appSimulasi = document.getElementById("appSimulasi");
+      if (btnDark) {
+        btnDark.addEventListener("click", () => {
+          appSimulasi.classList.toggle("dark-mode-demo");
+          btnDark.innerText = appSimulasi.classList.contains("dark-mode-demo") ? "☀️ Light Mode" : "🌙 Dark Mode";
+        });
+      }
+
+      function toggleAnswer() {
+        var x = document.getElementById("answer-code");
+        if (x.style.display === "none") x.style.display = "block"; else x.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

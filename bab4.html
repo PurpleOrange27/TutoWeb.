@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 4: CSS Frameworks - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+    <style>
+      :root { --bab-color: #7952b3; } /* Bootstrap Purple */
+      
+      section {
+        background: rgba(20, 10, 30, 0.6);
+        border: 1px solid rgba(121, 82, 179, 0.3);
+        backdrop-filter: blur(15px);
+        border-radius: 16px; padding: 30px; margin-bottom: 40px;
+        box-shadow: 0 8px 32px 0 rgba(121, 82, 179, 0.15);
+      }
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom:10px; margin-bottom:20px;
+      }
+      .docs-table { width: 100%; border-collapse: separate; border-spacing: 0; overflow:hidden; border-radius:10px;}
+      .docs-table th { background: var(--bab-color); color: white; padding: 15px; }
+      .docs-table td { padding: 15px; background: rgba(255,255,255,0.05); border-bottom: 1px solid #333; }
+      
+      .code-window { background: #1e1e2e; border: 1px solid #7952b3; border-radius: 8px; margin-top:15px; overflow:hidden;}
+      .window-header { background: #2d2b55; padding: 8px 15px; color: #a599e9; font-size: 0.8rem; display: flex; gap: 8px; align-items:center; }
+      .window-header::before { content: "● ● ●"; color: #ff79c6; letter-spacing: -2px; margin-right: 10px; }
+      /* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-header"><h3><br>Daftar Isi</h3></div>
+        <ul class="sidebar-menu">
+          <li><a href="#intro" class="active-link">4.1 Pengenalan</a></li>
+          <li><a href="#bootstrap">4.2 Bootstrap 5</a></li>
+          <li><a href="#tailwind">4.3 Tailwind CSS</a></li>
+          <li><a href="#compare">4.4 Perbandingan</a></li>
+          <li><a href="#praktek">4.5 Praktikum</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color); color: white">Bab 4</span>
+          <h1>CSS Frameworks</h1>
+          <p>Mempercepat proses desain website menggunakan pustaka kode (library) siap pakai.</p>
+        </header>
+
+        <section id="intro">
+          <h2>4.1 Pengenalan CSS Frameworks</h2>
+          <p><strong>CSS Framework</strong> adalah kumpulan kode CSS yang sudah disiapkan agar kita tidak perlu mendesain elemen dasar dari nol.</p>
+          <div class="info-box" style="background-color: rgba(121, 82, 179, 0.1); border-left: 5px solid #7952b3; padding:20px; border-radius:8px;">
+            <i class="fas fa-cubes" style="color: #7952b3; font-size: 1.5rem; margin-right:10px;"></i>
+            <span><strong>Keuntungan:</strong> Desain lebih cepat, sudah responsif (mobile-friendly), dan standar industri.</span>
+          </div>
+        </section>
+
+        <section id="bootstrap">
+          <h2>4.2 Bootstrap 5: Component Based</h2>
+          <p>Bootstrap adalah framework paling populer. Kita hanya perlu menambahkan <strong>nama class</strong> tertentu ke HTML.</p>
+          <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:flex-start;">
+              <div style="flex:1; min-width:300px;">
+                <h4>Grid System</h4>
+                <div class="code-window"><pre class="code-content"><code>&lt;div class="row"&gt;
+  &lt;div class="col-6"&gt;50%&lt;/div&gt;
+  &lt;div class="col-6"&gt;50%&lt;/div&gt;
+&lt;/div&gt;</code></pre></div>
+              </div>
+              <div style="flex:1; min-width:300px; text-align:center; background: rgba(255,255,255,0.05); padding:20px; border-radius:10px;">
+                <h4>Komponen Tombol</h4>
+                <div style="margin-bottom:15px;">
+                    <button style="background:#0d6efd; color:white; border:none; padding:8px 16px; border-radius:4px; margin:5px;">Primary</button>
+                    <button style="background:#198754; color:white; border:none; padding:8px 16px; border-radius:4px; margin:5px;">Success</button>
+                    <button style="background:#dc3545; color:white; border:none; padding:8px 16px; border-radius:4px; margin:5px;">Danger</button>
+                </div>
+                <code>class="btn btn-primary"</code>
+              </div>
+          </div>
+        </section>
+
+        <section id="tailwind">
+          <h2>4.3 Tailwind CSS: Utility-First</h2>
+          <p>Tailwind memberikan class-class kecil (utility) untuk membangun desain sesuka hati.</p>
+          <div class="code-window">
+            <div class="window-header"><span class="filename">tailwind-button.html</span></div>
+            <pre class="code-content"><code>&lt;button class="bg-blue-500 text-white font-bold py-2 px-4 rounded"&gt;
+  Tombol Saya
+&lt;/button&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="compare">
+          <h2>4.4 Perbandingan Frameworks</h2>
+          <table class="docs-table">
+            <tr><th>Fitur</th><th>Bootstrap 5</th><th>Tailwind CSS</th></tr>
+            <tr><td><strong>Pendekatan</strong></td><td>Komponen Siap Pakai (Instan)</td><td>Utility Classes (Fleksibel)</td></tr>
+            <tr><td><strong>Customisasi</strong></td><td>Agak sulit (Override CSS)</td><td>Sangat mudah</td></tr>
+          </table>
+        </section>
+
+        <section id="praktek">
+          <h2>4.5 Praktikum: Layout Responsif 📱</h2>
+          <div class="challenge-container" style="border: 2px solid var(--bab-color); padding: 25px; border-radius:12px; background: rgba(121, 82, 179, 0.05);">
+            <div class="challenge-header">
+              <h4 style="color:var(--bab-color)">🎯 Misi Anda:</h4>
+              <p>Buat struktur HTML yang jika di Laptop tampil 3 kolom, tapi jika di HP tampil 1 kolom ke bawah.</p>
+            </div>
+            <div class="preview-box" style="margin:20px 0; padding:10px; background:rgba(255,255,255,0.1); border-radius:8px;">
+              <div style="display: flex; gap: 10px; flex-wrap: wrap">
+                <div style="background: var(--bab-color); color:white; padding: 20px; flex: 1 1 30%; min-width: 200px; text-align:center; border-radius:6px;">Col 1</div>
+                <div style="background: #563d7c; color:white; padding: 20px; flex: 1 1 30%; min-width: 200px; text-align:center; border-radius:6px;">Col 2</div>
+                <div style="background: var(--bab-color); color:white; padding: 20px; flex: 1 1 30%; min-width: 200px; text-align:center; border-radius:6px;">Col 3</div>
+              </div>
+            </div>
+            <button class="btn-toggle-answer" onclick="toggleAnswer()" style="padding:10px 20px; background:var(--bab-color); color:white; border:none; border-radius:50px; cursor:pointer;">👁️ Lihat Kode Bootstrap</button>
+            <div id="answer-code" class="code-window" style="display: none;">
+              <pre class="code-content"><code>&lt;div class="row"&gt;
+    &lt;div class="col-12 col-md-4"&gt;Kolom 1&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Kolom 2&lt;/div&gt;
+    &lt;div class="col-12 col-md-4"&gt;Kolom 3&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="bab3.html" class="btn-prev">← Bab 3: CSS3</a>
+          <a href="bab5.html" class="btn-next">Lanjut: Bab 5 (JS Modern) →</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      function toggleAnswer() {
+        var x = document.getElementById("answer-code");
+        var btn = document.querySelector(".btn-toggle-answer");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+            btn.innerHTML = "🙈 Sembunyikan Kode";
+        } else {
+            x.style.display = "none";
+            btn.innerHTML = "👁️ Lihat Kode Bootstrap";
+        }
+      }
+    </script>
+  </body>
+</html>

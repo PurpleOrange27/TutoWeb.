@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 2: HTML5 - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root { --bab-color: #e44d26; } /* Orange HTML5 */
+
+      section {
+        background: rgba(30, 41, 59, 0.6);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(228, 77, 38, 0.2);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        padding-bottom: 10px; margin-bottom: 20px;
+      }
+      .code-window {
+        background: #0d1117; border-radius: 8px; border: 1px solid #30363d; overflow: hidden; margin-top: 15px;
+      }
+      .window-header {
+        background: #161b22; padding: 10px; font-family: monospace; font-size: 0.8rem; color: #8b949e;
+        display: flex; gap: 8px; align-items: center;
+      }
+      .window-header::before {
+        content: ""; width: 10px; height: 10px; background: #ff5f56; border-radius: 50%; box-shadow: 15px 0 0 #ffbd2e, 30px 0 0 #27c93f; margin-right: 35px;
+      }
+      .browser-frame {
+        border-top: 25px solid #e2e8f0; border-radius: 8px; background: rgb(4, 4, 4); color: black; padding: 20px;
+      }
+      .challenge-container {
+        border: 2px dashed var(--bab-color); padding: 25px; border-radius: 12px; background: rgba(228, 77, 38, 0.05);
+      }
+      /* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+        <li><a href="../contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a></li>
+    </ul>
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+        <div class="sidebar-header"><h3><br>Daftar Isi</h3></div>
+        <ul class="sidebar-menu">
+          <li><a href="#intro" class="active-link">2.1 Pengenalan</a></li>
+          <li><a href="#struktur">2.2 Struktur Dasar</a></li>
+          <li><a href="#teks">2.3 Teks & Format</a></li>
+          <li><a href="#link">2.4 Link & Navigasi</a></li>
+          <li><a href="#list-table">2.5 List & Table</a></li>
+          <li><a href="#form">2.6 Formulir</a></li>
+          <li><a href="#media">2.7 Multimedia</a></li>
+          <li><a href="#praktek">2.8 Praktikum</a></li>
+        </ul>
+      </aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color)">Bab 2</span>
+          <h1>HTML5 – Struktur Dasar Website</h1>
+          <p>Mempelajari elemen-elemen pembangun halaman web modern dari teks, tabel, hingga multimedia.</p>
+        </header>
+
+        <section id="intro">
+          <h2>2.1 Pengenalan HTML5</h2>
+          <p><strong>HTML5</strong> adalah versi terbaru dari HTML yang mendukung elemen semantik, audio, video, dan grafis tanpa perlu plugin tambahan.</p>
+          <div class="info-box" style="background: rgba(228, 77, 38, 0.1); border-left: 4px solid var(--bab-color); padding: 20px; border-radius: 8px;">
+            <i class="fab fa-html5" style="color: var(--bab-color); font-size: 1.5rem; margin-right: 10px;"></i>
+            <span>Browser modern (Chrome, Edge, Firefox) sudah mendukung penuh standar HTML5.</span>
+          </div>
+        </section>
+
+        <section id="struktur">
+          <h2>2.2 Struktur Dasar Dokumen HTML</h2>
+          <p>Setiap file HTML harus memiliki kerangka standar berikut:</p>
+          <div class="code-window">
+            <div class="window-header"><span class="filename">struktur.html</span></div>
+            <pre class="code-content" style="margin:0; border:0;"><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Konten website ditulis di sini --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="teks">
+          <h2>2.3 Heading, Paragraph, & Formatting</h2>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+              <div>
+                  <h4 style="color: var(--bab-color);">Kode</h4>
+                  <div class="code-window" style="margin-top:0"><pre class="code-content" style="margin:0"><code>&lt;h1&gt;Judul Besar&lt;/h1&gt;
+&lt;p&gt;Paragraf biasa.&lt;/p&gt;
+&lt;strong&gt;Tebal&lt;/strong&gt;</code></pre></div>
+              </div>
+              <div style="background: white; color: black; padding: 20px; border-radius: 8px;">
+                  <h4 style="color: #333; margin-top:0;">Preview</h4>
+                  <h1>Judul Besar</h1>
+                  <p>Paragraf biasa.</p>
+                  <strong>Tebal</strong>
+              </div>
+          </div>
+        </section>
+
+        <section id="link">
+          <h2>2.4 Hyperlink dan Navigasi</h2>
+          <p>Link menghubungkan satu halaman ke halaman lain menggunakan tag <code>&lt;a&gt;</code>.</p>
+          <div class="code-window">
+            <pre class="code-content" style="margin:0"><code>&lt;!-- Link ke website luar --&gt;
+&lt;a href="https://google.com" target="_blank"&gt;Buka Google&lt;/a&gt;
+
+&lt;!-- Link ke halaman lokal --&gt;
+&lt;a href="about.html"&gt;Tentang Kami&lt;/a&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="list-table">
+          <h2>2.5 List dan Table</h2>
+          <div style="display: flex; gap: 20px; flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 250px;">
+                <h4>List (Daftar)</h4>
+                <div class="code-window"><pre class="code-content"><code>&lt;ul&gt; &lt;!-- Bullet --&gt;
+  &lt;li&gt;Kopi&lt;/li&gt;
+&lt;/ul&gt;</code></pre></div>
+            </div>
+            <div style="flex: 1; min-width: 250px;">
+                <h4>Table (Tabel)</h4>
+                <table class="docs-table" style="width:100%; border-collapse: collapse;">
+                    <tr style="background: var(--bab-color); color: white;"><th style="padding:10px;">Nama</th><th>Nilai</th></tr>
+                    <tr style="background: #333;"><td style="padding:10px;">Budi</td><td>90</td></tr>
+                </table>
+            </div>
+          </div>
+        </section>
+
+        <section id="form">
+          <h2>2.6 Formulir (Form) HTML</h2>
+          <p>Digunakan untuk menerima input dari pengguna.</p>
+          <div class="browser-frame">
+            <form onsubmit="event.preventDefault(); alert('Terkirim!');">
+                <label>Nama:</label><br />
+                <input type="text" placeholder="Masukkan nama..." style="padding: 8px; width: 100%; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"/><br />
+                <label>Email:</label><br />
+                <input type="email" placeholder="email@contoh.com" style="padding: 8px; width: 100%; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px;"/><br />
+                <button type="submit" style="background: var(--bab-color); color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Kirim Data</button>
+            </form>
+          </div>
+        </section>
+
+        <section id="media">
+          <h2>2.7 Multimedia</h2>
+          <div class="code-window">
+            <pre class="code-content" style="margin:0"><code>&lt;!-- Gambar --&gt;
+&lt;img src="foto.jpg" alt="Deskripsi gambar" width="300"&gt;
+
+&lt;!-- Video --&gt;
+&lt;video controls width="300"&gt;
+  &lt;source src="video.mp4" type="video/mp4"&gt;
+&lt;/video&gt;</code></pre>
+          </div>
+        </section>
+
+        <section id="praktek">
+          <h2>2.8 Praktikum: Halaman Profil Sederhana 👨‍💻</h2>
+          <div class="challenge-container">
+            <div class="challenge-header">
+              <h4 style="color: var(--bab-color); font-size: 1.2rem; margin-bottom: 15px;">🎯 Misi Anda:</h4>
+              <p>Buat file <code>profil.html</code> yang berisi:</p>
+              <ul style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <li style="background: #333; padding: 5px 15px; border-radius: 20px;">Foto Profil</li>
+                <li style="background: #333; padding: 5px 15px; border-radius: 20px;">Nama</li>
+                <li style="background: #333; padding: 5px 15px; border-radius: 20px;">Deskripsi</li>
+                <li style="background: #333; padding: 5px 15px; border-radius: 20px;">Tabel Sekolah</li>
+              </ul>
+            </div>
+
+            <button class="btn-toggle-answer" onclick="toggleAnswer()" style="margin-top: 20px; padding: 10px 20px; background: white; color: var(--bab-color); border: 2px solid var(--bab-color); border-radius: 50px; cursor: pointer; font-weight: bold;">
+              👁️ Lihat Contoh Kode
+            </button>
+
+            <div id="answer-code" class="code-window" style="display: none; margin-top: 15px">
+              <pre class="code-content" style="margin:0"><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Profil Saya&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;img src="avatar.png" width="100" alt="Foto Profil"&gt;
+    &lt;h1&gt;Ahmad Fauzi&lt;/h1&gt;
+    &lt;p&gt;Web Developer pemula yang semangat belajar.&lt;/p&gt;
+    &lt;h3&gt;Pendidikan&lt;/h3&gt;
+    &lt;table border="1"&gt;
+        &lt;tr&gt;&lt;th&gt;Tahun&lt;/th&gt;&lt;th&gt;Sekolah&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;2020&lt;/td&gt;&lt;td&gt;SMK TI&lt;/td&gt;&lt;/tr&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+            </div>
+          </div>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="bab1.html" class="btn-prev">← Bab 1: Intro</a>
+          <a href="bab3.html" class="btn-next">Lanjut: Bab 3 (CSS3) →</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+    <script>
+      // ... (Keep original script)
+      function toggleAnswer() {
+        var x = document.getElementById("answer-code");
+        var btn = document.querySelector(".btn-toggle-answer");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+          btn.innerHTML = "🙈 Sembunyikan Kode";
+        } else {
+          x.style.display = "none";
+          btn.innerHTML = "👁️ Lihat Contoh Kode";
+        }
+      }
+    </script>
+  </body>
+</html>

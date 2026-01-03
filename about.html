@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami - Kelompok 11</title>
+
+    <link rel="stylesheet" href="css/style.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <link
+      rel="shortcut icon"
+      href="assets/images/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <style>
+      .about-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        margin-bottom: 60px;
+        align-items: center;
+      }
+
+      .info-table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      .info-table td {
+        padding: 12px 0;
+        border-bottom: 1px solid #f1f5f9;
+        color: var(--text-muted);
+      }
+      .info-table th {
+        text-align: left;
+        padding: 12px 0;
+        color: var(--text-main);
+        width: 40%;
+      }
+      .info-table tr:last-child td {
+        border: none;
+      }
+
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+      .tech-badge {
+        background: white;
+        border: 1px solid #e2e8f0;
+        padding: 8px 16px;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--text-muted);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: 0.3s;
+      }
+      .tech-badge:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--primary);
+        color: var(--primary);
+      }
+
+      /* TEAM SECTION STYLE */
+      .team-section {
+        margin-top: 80px; /* MENAMBAH JARAK DARI GARIS */
+        text-align: center; /* Memastikan judul ada di tengah */
+      }
+
+      /* --- TAMBAHAN KHUSUS JUDUL TIM --- */
+      .section-title {
+        display: flex;          /* Menggunakan Flexbox */
+        flex-direction: column; /* Menyusun elemen ke bawah (bertumpuk) */
+        align-items: center;    /* Rata tengah */
+        gap: 15px;              /* Jarak antar teks */
+        margin-bottom: 50px;    /* Jarak ke kartu tim */
+        
+      }
+
+      .section-title .badge {
+        background: rgba(59, 130, 246, 0.1); /* Latar biru transparan */
+        color: var(--primary);
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+        border: 1px solid var(--primary);
+        text-transform: uppercase;
+        width: fit-content;     /* Agar background mengikuti panjang teks */
+      }
+
+      .section-title h2 {
+        font-size: 2.5rem;
+        margin: 0;
+        line-height: 1.2;
+        
+        /* PERBAIKAN WARNA: Dari Putih Terang ke Biru Neon (Primary) */
+        background: linear-gradient(90deg, #ffffff, var(--primary));
+        
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* TAMBAHAN: Efek Glow agar menyala seperti neon */
+        filter: drop-shadow(0 0 10px var(--primary-glow));
+      }
+
+      .section-title p {
+        font-size: 1.1rem;
+        color: var(--text-muted);
+        max-width: 600px;
+        margin: 0;
+      }
+
+      .team-grid {
+        display: flex; /* Ubah ke Flex agar lebih mudah di-center */
+        justify-content: center; /* POSISI TENGAH */
+        flex-wrap: wrap;
+        gap: 30px;
+        margin-top: 40px;
+      }
+/* --- PERBAIKAN KARTU TIM --- */
+.team-card {
+  background: var(--bg-surface); /* Gunakan variabel agar sinkron dengan Dark/Light mode */
+  border-radius: 20px;
+  padding: 30px 20px;
+  text-align: center;
+  border: 1px solid var(--border-color);
+  transition: all 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Memastikan semua konten rata tengah dan tidak tumpang tindih */
+  height: auto; /* Biarkan kartu memanjang sesuai isi teks */
+}
+
+/* Membatasi ukuran kontainer foto agar tidak menutupi nama */
+.profile-img-container {
+  width: 120px; /* Ukuran maksimal di desktop */
+  height: 120px;
+  margin: 0 auto 20px;
+  position: relative;
+  flex-shrink: 0; /* Mencegah gambar gepeng */
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--primary);
+  box-shadow: 0 0 15px var(--primary-glow);
+}
+
+/* Pastikan nama memiliki jarak yang cukup */
+.team-card h3 {
+  margin-top: 10px;
+  font-size: 1.4rem;
+  color: var(--text-main);
+  z-index: 1; /* Memastikan teks berada di atas bayangan gambar jika ada */
+}
+
+      .role-badge {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 50px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 15px;
+      }
+
+      .role-fe {
+        background: #fee2e2;
+        color: #ef4444;
+      }
+      .role-be {
+        background: #e0f2fe;
+        color: #0ea5e9;
+      }
+
+      .team-info {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      .nim-text {
+        font-family: "Fira Code", monospace;
+        font-size: 0.8rem;
+        color: #94a3b8;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      .team-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .social-link {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background: #f8fafc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #64748b;
+        transition: 0.3s;
+        text-decoration: none;
+      }
+
+      .social-link:hover {
+        background: var(--primary);
+        color: white;
+        transform: scale(1.1);
+      }
+
+      @media (max-width: 768px) {
+        .about-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      /* HEADER SECTION STYLE */
+     /* HEADER SECTION STYLE (Tentang Platform) */
+      .chapter-header {
+        text-align: center;
+        margin-top: 60px;
+        margin-bottom: 80px;
+        position: relative;
+        padding: 40px 20px;
+      }
+
+      /* Efek Cahaya Halus di Belakang Judul */
+      .chapter-header::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: 100px;
+        background: rgba(59, 130, 246, 0.3); /* Biru Transparan */
+        filter: blur(80px); /* Efek Blur Kuat */
+        z-index: -1;
+      }
+
+      .chapter-header h1 {
+        font-size: 3.5rem; /* Ukuran Besar */
+        font-weight: 800;
+        margin-bottom: 20px;
+        
+        /* Warna Gradasi Putih ke Biru */
+        background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+        /* Efek Kilau Neon */
+        text-shadow: 0 0 30px rgba(59, 130, 246, 0.5);
+      }
+
+      .chapter-header p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--text-muted);
+        line-height: 1.8;
+      }
+
+      .chapter-header h1 {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+      }
+
+      .chapter-header p {
+        max-width: 700px; /* Membatasi lebar teks agar rapi saat di tengah */
+        margin: 0 auto;   /* Posisi elemen di tengah container */
+        color: var(--text-muted);
+      } 
+      @media screen and (max-width: 768px) {
+  /* Mengecilkan foto lebih jauh untuk layar HP agar nama terlihat jelas */
+  .profile-img-container {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .team-card {
+    padding: 25px 15px !important;
+    max-width: 100%; /* Agar kartu tidak meluap ke samping */
+  }
+
+  .team-card h3 {
+    font-size: 1.2rem !important;
+  }
+}
+
+      
+    </style>
+  </head>
+  <body>
+  <nav class="navbar">
+    <div class="logo">TutoWeb.</div>
+
+    <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">Tentang</a></li>
+        <li><a href="profil.html">Profil Saya</a></li>
+
+        <li class="nav-item-dropdown">
+            <a href="#">Materi ▾</a>
+            <ul class="dropdown-menu">
+            <li><a href="materi/bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="materi/bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="materi/bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="materi/bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="materi/bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="materi/bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="materi/bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="materi/bab8.html">Bab 8: Project</a></li>
+            </ul>
+        </li>
+
+        <li>
+            <a href="contact.html" style="border: 1px solid var(--primary); color: var(--primary);">Kontak</a>
+        </li>
+    </ul>
+
+    <button id="theme-toggle" class="theme-btn" title="Ganti Mode">
+        🌙
+    </button>
+</nav>
+      <div class="burger" onclick="toggleMenu()">
+        <div class="line1"></div>
+        <div class="line2"></div>
+        <div class="line3"></div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <header class="chapter-header"> 
+        <h1>Tentang Platform</h1>
+        <p>
+          Sinergi antara akademis dan teknologi dalam pengembangan sistem
+          pembelajaran modern.
+        </p>
+      </header>
+
+      <section class="about-grid">
+        <div>
+          <h2 class="gradient-text">Filosofi Pengembangan</h2>
+          <p>
+            TutoWeb dirancang bukan sekadar sebagai pemenuhan tugas akhir mata
+            kuliah <strong>Pemrograman Web 1</strong>, melainkan sebagai
+            manifestasi pemahaman komprehensif tim kami terhadap ekosistem web
+            modern.
+          </p>
+          <p>
+            Kami menerapkan prinsip <em>Fundamental First</em>, di mana setiap
+            baris kode ditulis untuk mendemonstrasikan penguasaan logika dasar
+            sebelum beralih ke abstraksi yang lebih kompleks.
+          </p>
+        </div>
+        <div class="info-box">
+          <i class="fas fa-bullseye"></i>
+          <div>
+            <h3>Visi Strategis</h3>
+            <p style="margin-bottom: 0">
+              Mendemokratisasi akses literasi digital bagi mahasiswa Teknik
+              Informatika Universitas Pamulang melalui platform yang inklusif,
+              terstruktur, dan relevan dengan standar industri.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="about-grid">
+        <div class="course-card" style="top: 0">
+          <div class="card-body" style="height: auto; text-align: left">
+            <h3>
+              <i class="fas fa-university" style="color: var(--primary)"></i>
+              Identitas Akademik
+            </h3>
+            <table class="info-table">
+              <tr>
+                <th>Institusi</th>
+                <td>Universitas Pamulang</td>
+              </tr>
+              <tr>
+                <th>Fakultas</th>
+                <td>Teknik Informatika</td>
+              </tr>
+              <tr>
+                <th>Mata Kuliah</th>
+                <td>Pemrograman Web 1</td>
+              </tr>
+              <tr>
+                <th>Kelompok</th>
+                <td><strong>11 (Kelas 05TPLP017)</strong></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div>
+          <h3>
+            <i class="fas fa-code-branch" style="color: var(--accent)"></i>
+            Arsitektur Teknologi
+          </h3>
+          <p>
+            Kami mengadopsi pendekatan <strong>Native Development</strong> untuk
+            menjamin performa maksimal dan efisiensi sumber daya (resource
+            efficiency):
+          </p>
+
+          <div class="tech-stack">
+            <div class="tech-badge">
+              <i class="fab fa-html5" style="color: #e34c26"></i> HTML5 Semantic
+            </div>
+            <div class="tech-badge">
+              <i class="fab fa-css3-alt" style="color: #264de4"></i> CSS3 Modern
+            </div>
+            <div class="tech-badge">
+              <i class="fab fa-js" style="color: #f7df1e"></i> Vanilla
+              JavaScript
+            </div>
+            <div class="tech-badge">
+              <i class="fab fa-php" style="color: #777bb4"></i> PHP 8.0 Core
+            </div>
+            <div class="tech-badge">
+              <i class="fas fa-database" style="color: #00758f"></i> MySQL RDBMS
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <hr class="divider" />
+
+      <section class="team-section">
+        <div class="section-title">
+          <span class="badge">Tim Pengembang</span>
+          <h2>Arsitek Sistem</h2>
+          <p>Dedikasi dan keahlian di balik pengembangan TutoWeb.</p>
+        </div>
+
+        
+
+        <div class="team-grid">
+          <div class="team-card">
+            <div class="profile-img-container">
+              <img
+                src="images/Sabrina Luna.jpeg"
+                alt="Sabrina Luna"
+                class="profile-img"
+              />
+            </div>
+
+            <h3>Sabrina Luna A.F.</h3>
+            <span class="role-badge role-fe">Lead UI/UX Designer</span>
+            <span class="role-badge role-fe">Backend Engineer</span>
+            <span class="nim-text">NIM: 231011401822</span>
+            
+
+            <p class="team-info">
+              "Mengembangkan logika sisi server (Server-Side) dan manajemen
+              basis data. Fokus pada integrasi PHP, keamanan data, serta
+              fungsionalitas sistem CRUD yang reliabel."
+            </p>
+
+            <div class="team-social">
+              <a href="https://www.instagram.com/fzhssaliav_" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox?compose=CllgCJZWPhLKZHZvfqSTjhbblkkJcwqLLmBmFncPtmLFQBWTLfDKTnbXJdJRcDvlcFhhXbLWSNq" class="social-link" title="Email Saya">
+              <i class="fas fa-envelope"></i>
+              </a>
+              <a href="https://github.com/Aliaaanay" class="social-link"><i class="fab fa-github"></i></a>
+              
+            </div>
+          </div>
+
+          <div class="team-card">
+            <div class="profile-img-container">
+              <img
+                src="images/Rizki.jpg"
+                alt="Rizki Rusdiaputra"
+                class="profile-img"
+              />
+            </div>
+
+            <h3>M. Rizki Rusdiaputra</h3>
+            <span class="role-badge role-be">Frontend Developer</span>
+            <span class="nim-text">NIM: 231011400733</span>
+
+            <p class="team-info">
+              "Bertanggung jawab atas <em>User Experience (UX)</em> dan
+              arsitektur visual. Merancang antarmuka yang intuitif serta
+              memastikan implementasi HTML/CSS yang responsif di berbagai
+              perangkat."
+            </p>
+
+            <div class="team-social">
+              <a href="https://www.instagram.com/rputra_2705" class="social-link"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://github.com/PurpleOrange27" class="social-link"><i class="fab fa-github"></i></a>
+              <a href="#" class="social-link"><i class="fas fa-code"></i></a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Kelompok 11 - Teknik Informatika Universitas Pamulang.</p>
+      <p class="credits">Developed with high standards & passion.</p>
+    </footer>
+
+    <div id="toast"></div>
+
+    <script src="js/script.js"></script>
+  </body>
+</html>

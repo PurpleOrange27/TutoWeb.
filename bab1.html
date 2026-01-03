@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Bab 1: Pengenalan Web - TutoWeb</title>
+    <link rel="stylesheet" href="../css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- MODERN OVERRIDES FOR BAB 1 --- */
+      :root {
+        --bab-color: #3b82f6;
+      } /* Warna Tema Bab 1 */
+
+      /* Card Style untuk Section */
+      section {
+        background: #3f37b580; /* Glass dark */
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        padding: 30px;
+        margin-bottom: 40px;
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+      section:hover {
+        transform: translateY(-5px);
+        border-color: var(--bab-color);
+      }
+
+      /* Gradient Titles */
+      h2 {
+        background: linear-gradient(90deg, #fff, var(--bab-color));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        border-bottom: 1px solid rgba(77, 134, 200, 0.1);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+
+      /* Diagram Box Style */
+      .diagram-box {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .d-item {
+        background: #1e293b;
+        border: 1px solid;
+        border-radius: 12px;
+        padding: 20px;
+        width: 140px;
+        text-align: center;
+        transition: 0.3s;
+      }
+      .d-item:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+      }
+      .d-item i {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        display: block;
+      }
+
+      /* Code Window MacOS Style */
+      .code-window {
+        background: #0f172a;
+        border-radius: 10px;
+        overflow: hidden;
+        border: 1px solid #334155;
+        margin-top: 15px;
+      }
+      .window-header {
+        background: #1e293b;
+        padding: 8px 15px;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.8rem;
+        color: #94a3b8;
+      }
+      .window-header::before {
+        content: "● ● ●";
+        font-size: 0.6rem;
+        color: #ff5f56;
+        letter-spacing: -2px;
+        margin-right: 10px;
+        text-shadow: 12px 0 #ffbd2e, 24px 0 #27c93f; /* Traffic lights simulation */
+      }
+      /* =========================================
+   CORE RESPONSIVE FIX FOR LEARNING MODULES
+   ========================================= */
+
+      /* --- Burger Menu Styling --- */
+      .burger {
+        display: none;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .burger div {
+        width: 25px;
+        height: 3px;
+        background-color: var(--text-main);
+        margin: 5px;
+        transition: all 0.3s ease;
+      }
+
+      @media screen and (max-width: 768px) {
+        .burger {
+          display: block; /* Muncul di HP */
+        }
+
+        /* Perbaikan Sidebar: Menjadi Horizontal Scroll agar konten tidak terdorong jauh */
+        .docs-sidebar {
+          padding: 15px !important;
+          position: sticky;
+          top: 70px;
+          z-index: 99;
+          background: var(--bg-surface);
+          overflow-x: auto;
+          white-space: nowrap;
+          display: block !important;
+          border-radius: 0;
+          margin: 0 -20px 20px -20px;
+          border-left: none;
+          border-right: none;
+        }
+
+        
+
+        .sidebar-menu {
+          display: flex; /* Menu berjejer ke samping */
+          gap: 10px;
+        }
+
+        .sidebar-menu li {
+          margin-bottom: 0;
+        }
+
+        .sidebar-menu a {
+          padding: 8px 15px;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--border-color);
+        }
+
+        /* Content Area */
+        .docs-content {
+          padding: 25px 15px !important;
+          border-radius: 0;
+          border: none;
+          box-shadow: none;
+        }
+
+        .chapter-header h1 {
+          font-size: 1.8rem; /* Ukuran judul bab lebih kecil di HP */
+        }
+
+        /* Tabel Responsif: Pastikan tabel bisa di-swipe */
+        .docs-table {
+          display: block;
+          overflow-x: auto;
+          -webkit-overflow-scrolling: touch;
+        }
+
+        /* Grid Layout Fix (Bab 2, 3, 5) */
+        .docs-content section div[style*="grid-template-columns"] {
+          grid-template-columns: 1fr !important; /* Paksa jadi 1 kolom di HP */
+        }
+
+        /* Diagram Box (Bab 1) */
+        .diagram-box {
+          gap: 10px;
+        }
+        .d-item {
+          width: 100%; /* Diagram full width di mobile */
+          max-width: none;
+        }
+      }
+      /* --- COMPARISON TABLE MODERN STYLE --- */
+.comparison-container {
+  width: 100%;
+  background: var(--bg-surface);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.comparison-header {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  background: #1f3c88; /* Header Blue Accent */
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.comparison-header > div {
+  padding: 20px;
+}
+
+.comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.3s ease;
+}
+
+.comparison-row:hover {
+  background: rgba(77, 163, 255, 0.05); /* Accent Hover */
+}
+
+.comparison-row > div {
+  padding: 20px;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.col-fitur {
+  color: var(--accent) !important;
+  font-weight: 600;
+}
+
+/* --- MOBILE RESPONSIVE: STACKED CARD --- */
+@media screen and (max-width: 768px) {
+  .comparison-header {
+    display: none; /* Sembunyikan header tabel di mobile */
+  }
+
+  .comparison-row {
+    display: block; /* Ubah grid menjadi blok tumpuk */
+    padding: 15px;
+    border-bottom: 8px solid var(--bg-body); /* Pemisah antar kartu */
+  }
+
+  .comparison-row > div {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    text-align: right;
+  }
+
+  /* Menampilkan Label menggunakan Pseudo-element */
+  .comparison-row > div::before {
+    content: attr(data-label);
+    font-weight: 700;
+    color: var(--text-main);
+    text-align: left;
+    padding-right: 15px;
+  }
+
+  .col-fitur {
+    background: rgba(77, 163, 255, 0.1);
+    margin: -15px -15px 10px -15px;
+    padding: 15px !important;
+    justify-content: center !important;
+    font-size: 1.1rem !important;
+  }
+
+  .col-fitur::before {
+    display: none; /* Sembunyikan label "Fitur" karena sudah jadi judul kartu */
+  }
+}
+/* Update pada elemen judul */
+h1 {
+  font-size: var(--h1-size, 30px);
+  color: var(--heading-primary) !important;
+  font-weight: 700;
+  -webkit-text-fill-color: initial; /* Reset gradient di light mode */
+}
+
+h2 {
+  font-size: var(--h2-size, 24px);
+  color: var(--heading-secondary) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 10px;
+  -webkit-text-fill-color: initial; /* Pastikan teks terlihat */
+}
+
+/* Update pada teks instruksi & paragraf */
+p, span, .instruction-text {
+  color: var(--text-primary) !important;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+/* Penanganan khusus untuk Section Card */
+section {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-color) !important;
+  color: var(--text-primary) !important;
+}
+
+      
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="logo">TutoWeb.</div>
+      <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../about.html">Tentang</a></li>
+        <li><a href="../profil.html">Profil Saya</a></li>
+        <li class="nav-item-dropdown">
+          <a href="#">Materi ▾</a>
+          <ul class="dropdown-menu">
+            <li><a href="bab1.html">Bab 1: Intro Web</a></li>
+            <li><a href="bab2.html">Bab 2: HTML5</a></li>
+            <li><a href="bab3.html">Bab 3: CSS3</a></li>
+            <li><a href="bab4.html">Bab 4: Frameworks</a></li>
+            <li><a href="bab5.html">Bab 5: JS Modern</a></li>
+            <li><a href="bab6.html">Bab 6: Form & Validasi</a></li>
+            <li><a href="bab7.html">Bab 7: Integrasi</a></li>
+            <li><a href="bab8.html">Bab 8: Project</a></li>
+          </ul>
+        </li>
+        <li>
+          <a
+            href="../contact.html"
+            style="border: 1px solid var(--primary); color: var(--primary)"
+            >Kontak</a
+          >
+        </li>
+      </ul>
+      <button id="theme-toggle" class="theme-btn" title="Ganti Mode">🌙</button>
+    </nav>
+
+    <div class="docs-container">
+      <aside class="docs-sidebar">
+  <div class="sidebar-header">
+    <h3>Daftar Isi</h3>
+    <div class="title-underline"></div>
+  </div>
+  <ul class="sidebar-menu">
+    <li><a href="#def" class="active-link">1.1 Definisi</a></li>
+    <li><a href="#beda">1.2 Statis vs Dinamis</a></li>
+    <li><a href="#komponen">1.3 Komponen Utama</a></li>
+    <li><a href="#tools">1.4 Tools</a></li>
+    <li><a href="#praktek">1.5 Praktikum</a></li>
+  </ul>
+</aside>
+
+      <main class="docs-content">
+        <header class="chapter-header">
+          <span class="badge-chapter" style="background: var(--bab-color)"
+            >Bab 1</span
+          >
+          <h1>Pengenalan Pemrograman Web</h1>
+          <p>Memahami fondasi dasar bagaimana internet dan website bekerja.</p>
+        </header>
+
+        <section id="def">
+          <h2>1.1 Definisi Pemrograman Web</h2>
+          <p>
+            Pemrograman web adalah proses pembuatan instruksi-instruksi untuk
+            menciptakan program/aplikasi yang dapat diakses melalui internet
+            menggunakan browser.
+          </p>
+        </section>
+<section id="beda">
+  <h2>1.2 Website Statis vs Dinamis</h2>
+  
+  <div class="comparison-container">
+    <div class="comparison-header">
+      <div class="col-fitur">Fitur</div>
+      <div class="col-statis">Statis (HTML/CSS)</div>
+      <div class="col-dinamis">Dinamis (PHP/JS/DB)</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-fitur" data-label="Fitur">Konten</div>
+      <div class="col-statis" data-label="Statis">Tetap, harus edit kode manual</div>
+      <div class="col-dinamis" data-label="Dinamis">Berubah otomatis (dari database)</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-fitur" data-label="Fitur">Interaksi</div>
+      <div class="col-statis" data-label="Statis">Hanya membaca (Read Only)</div>
+      <div class="col-dinamis" data-label="Dinamis">Bisa login, komentar, transaksi</div>
+    </div>
+
+    <div class="comparison-row">
+      <div class="col-fitur" data-label="Fitur">Contoh</div>
+      <div class="col-statis" data-label="Statis">Company Profile sederhana</div>
+      <div class="col-dinamis" data-label="Dinamis">Facebook, Tokopedia</div>
+    </div>
+  </div>
+</section>
+
+        <section id="komponen">
+          <h2>1.3 Komponen Utama (The Big Three)</h2>
+          <div class="diagram-box">
+            <div class="d-item" style="border-color: #e44d26; color: #e44d26">
+              <i class="fab fa-html5"></i> <strong>HTML</strong><br /><small
+                >Struktur (Tulang)</small
+              >
+            </div>
+            <div class="d-item" style="border-color: #264de4; color: #264de4">
+              <i class="fab fa-css3-alt"></i> <strong>CSS</strong><br /><small
+                >Tampilan (Kulit/Baju)</small
+              >
+            </div>
+            <div class="d-item" style="border-color: #f7df1e; color: #f7df1e">
+              <i class="fab fa-js-square"></i> <strong>JS</strong><br /><small
+                >Fungsi (Otak)</small
+              >
+            </div>
+          </div>
+        </section>
+
+        <section id="tools">
+          <h2>1.4 Tools & Lingkungan Pengembangan</h2>
+          <div
+            style="
+              background: rgba(59, 130, 246, 0.1);
+              border-left: 4px solid var(--bab-color);
+              padding: 15px;
+              border-radius: 4px;
+            "
+          >
+            <ul class="list-check" style="margin: 0; padding-left: 20px">
+              <li style="margin-bottom: 10px">
+                <strong>Code Editor:</strong> Visual Studio Code (VS Code) -
+                Paling populer.
+              </li>
+              <li style="margin-bottom: 10px">
+                <strong>Web Browser:</strong> Google Chrome atau Microsoft Edge
+                (untuk debugging).
+              </li>
+              <li>
+                <strong>Extension:</strong> Live Server (agar auto-refresh saat
+                save).
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="praktek">
+          <h2>1.5 Praktikum: Hello World 🌍</h2>
+          <p>Buat file <code>index.html</code> dan tulis kode berikut:</p>
+          <div class="code-window">
+            <div class="window-header">
+              <span class="filename">index.html</span>
+            </div>
+            <pre
+              class="code-content"
+              style="margin: 0; border: none"
+            ><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+    &lt;h1&gt;Halo Dunia!&lt;/h1&gt;
+    &lt;p&gt;Saya sedang belajar web programming.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+          </div>
+          <p style="margin-top: 15px">
+            Buka file tersebut di Chrome, maka teks akan muncul.
+          </p>
+        </section>
+
+        <div class="chapter-nav">
+          <a href="../index.html" class="btn-prev">← Home</a>
+          <a href="bab2.html" class="btn-next">Lanjut: Bab 2 (HTML5) →</a>
+        </div>
+      </main>
+    </div>
+    <script src="../js/script.js"></script>
+  </body>
+</html>
